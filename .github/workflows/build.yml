@@ -21,6 +21,8 @@ jobs:
           ln -s /usr/local/bin/go121 /usr/local/bin/go
           go version
           uname -m
+          go install github.com/goreleaser/goreleaser@latest
+          goreleaser -v
         run: |
           export LATEST_APP=$(wget -qO- https://api.github.com/repos/binwiederhier/ntfy/tags | gawk -F '["v]' '/name/{print "v"$5;exit}')
           echo $LATEST_APP
