@@ -14,10 +14,11 @@ jobs:
         usesh: true
         release: 13.2
         prepare: |
-          pkg install -y node wget curl git go122 gcc bash gawk gsed
-          ln -s /usr/local/bin/go122 /usr/local/bin/go
+          pkg install -y node wget curl git go121 gcc bash gawk gsed
+          ln -s /usr/local/bin/go121 /usr/local/bin/go
         run: |
           export LATEST_APP=$(wget -qO- https://api.github.com/repos/binwiederhier/ntfy/tags | gawk -F '["v]' '/name/{print "v"$5;exit}')
+          echo $LATEST_APP
           git clone -b $LATEST_APP https://github.com/binwiederhier/ntfy
           cd ntfy
           make build
