@@ -19,12 +19,15 @@ jobs:
           npm -v
           which python3
           ln -s /usr/local/bin/go121 /usr/local/bin/go
+          go version
+          uname -m
         run: |
           export LATEST_APP=$(wget -qO- https://api.github.com/repos/binwiederhier/ntfy/tags | gawk -F '["v]' '/name/{print "v"$5;exit}')
           echo $LATEST_APP
           git clone -b $LATEST_APP https://github.com/binwiederhier/ntfy
           cd ntfy
-          make build
+          make cli-linux-amd64
+          make web
           tar -czvf ntfy.tar.gz dist/
 
           
