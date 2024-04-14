@@ -14,11 +14,16 @@ jobs:
         usesh: true
         release: 13.2
         prepare: |
-          pkg install -y node wget curl git go121 gcc bash gawk gsed python3 www/npm 
+          pkg install -y node wget curl git gcc bash gawk gsed python3 www/npm 
           node -v
           npm -v
           which python3
-          ln -s /usr/local/bin/go121 /usr/local/bin/go
+          mkdir -p ~/local/soft && cd ~/local/soft
+          wget https://dl.google.com/go/go1.22.0.freebsd-amd64.tar.gz
+          tar -xzvf go1.22.0.freebsd-amd64.tar.gz
+          rm go1.22.0.freebsd-amd64.tar.gz
+          echo 'export PATH=~/local/soft/go/bin:$PATH' >> ~/.profile
+          source ~/.profile
           go version
           uname -m
           go install github.com/goreleaser/goreleaser@latest
