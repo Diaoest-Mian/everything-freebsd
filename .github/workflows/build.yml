@@ -20,7 +20,7 @@ jobs:
           which python3
           mkdir -p myapp
           cd myapp
-          wget https://dl.google.com/go/go1.22.0.freebsd-amd64.tar.gz
+          wget -q https://dl.google.com/go/go1.22.0.freebsd-amd64.tar.gz
           tar -xzf go1.22.0.freebsd-amd64.tar.gz
           rm go1.22.0.freebsd-amd64.tar.gz
           cd ..
