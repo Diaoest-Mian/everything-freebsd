@@ -24,6 +24,9 @@ jobs:
           tar -xzf go1.22.0.freebsd-amd64.tar.gz
           rm go1.22.0.freebsd-amd64.tar.gz
           cd ..
+          pwd
+          ls -lrth myapp
+          ls -lrt myapp/go/bin
           ln -s myapp/go/bin/go /usr/local/bin/go
           go version
           uname -m
