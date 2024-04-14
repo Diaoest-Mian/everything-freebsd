@@ -17,22 +17,16 @@ jobs:
           pkg install -y node wget curl git gcc bash gawk gsed python3 www/npm sqlite3
           node -v
           npm -v
-          which python3
-          mkdir -p myapp
-          cd myapp
           wget -q https://dl.google.com/go/go1.22.0.freebsd-amd64.tar.gz
           tar -xzf go1.22.0.freebsd-amd64.tar.gz
           rm go1.22.0.freebsd-amd64.tar.gz
-          cd ..
+          echo "$PWD/go/bin" >> $GITHUB_PATH
           pwd
-          ls -lrth myapp
-          ls -lrt myapp/go/bin
-          ln -s myapp/go/bin/go /usr/local/bin/go
-          myapp/go/bin/go version
+          go version
           uname -m
           wget -q https://pkg.freebsd.org/FreeBSD:13:amd64/latest/All/goreleaser-1.24.0_2.pkg
           tar -xzvf goreleaser-1.24.0_2.pkg
-          ln -s usr/local/bin/goreleaser /usr/local/bin/goreleaser
+          echo "$PWD/usr/local/bin" >> $GITHUB_PATH
           whoami
           goreleaser -v
         run: |
