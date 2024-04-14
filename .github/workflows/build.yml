@@ -18,11 +18,10 @@ jobs:
           node -v
           npm -v
           which python3
-          mkdir -p ~/local/soft && cd ~/local/soft
           wget https://dl.google.com/go/go1.22.0.freebsd-amd64.tar.gz
-          tar -xzvf go1.22.0.freebsd-amd64.tar.gz
+          tar -xzf go1.22.0.freebsd-amd64.tar.gz
           rm go1.22.0.freebsd-amd64.tar.gz
-          ln -s ~/local/soft/go/bin/go /usr/local/bin/go
+          ln -s go/bin/go /usr/local/bin/go
           go version
           uname -m
           go install github.com/goreleaser/goreleaser@latest
