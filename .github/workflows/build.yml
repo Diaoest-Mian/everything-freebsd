@@ -30,7 +30,10 @@ jobs:
           ln -s myapp/go/bin/go /usr/local/bin/go
           myapp/go/bin/go version
           uname -m
-          myapp/go/bin/go install github.com/goreleaser/goreleaser@latest
+          wget -q https://pkg.freebsd.org/FreeBSD:13:amd64/latest/All/goreleaser-1.24.0_2.pkg
+          tar -xzvf goreleaser-1.24.0_2.pkg
+          ln -s usr/local/bin/goreleaser /usr/local/bin/goreleaser
+          whoami
           goreleaser -v
         run: |
           export LATEST_APP=$(wget -qO- https://api.github.com/repos/binwiederhier/ntfy/tags | gawk -F '["v]' '/name/{print "v"$5;exit}')
