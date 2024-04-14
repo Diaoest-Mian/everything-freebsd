@@ -28,9 +28,9 @@ jobs:
           ls -lrth myapp
           ls -lrt myapp/go/bin
           ln -s myapp/go/bin/go /usr/local/bin/go
-          go version
+          myapp/go/bin/go version
           uname -m
-          go install github.com/goreleaser/goreleaser@latest
+          myapp/go/bin/go install github.com/goreleaser/goreleaser@latest
           goreleaser -v
         run: |
           export LATEST_APP=$(wget -qO- https://api.github.com/repos/binwiederhier/ntfy/tags | gawk -F '["v]' '/name/{print "v"$5;exit}')
