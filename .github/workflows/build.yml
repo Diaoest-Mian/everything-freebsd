@@ -18,7 +18,7 @@ jobs:
           node -v
           npm -v
           which python3
-          
+          ln -s /usr/local/bin/go121 /usr/local/bin/go
           go version
           uname -m
           go install github.com/goreleaser/goreleaser@latest
